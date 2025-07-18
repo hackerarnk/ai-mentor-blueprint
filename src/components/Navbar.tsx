@@ -1,7 +1,7 @@
 
 // ✅ File: src/components/Navbar.tsx
 import { Link, useLocation } from "react-router-dom";
-import { Brain, Menu, X } from "lucide-react";
+import { Brain, Menu, X, LogIn, UserPlus } from "lucide-react";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -49,6 +49,24 @@ const Navbar = () => {
             ))}
           </div>
 
+          {/* Auth Links - Desktop */}
+          <div className="hidden md:flex items-center space-x-2">
+            <Link
+              to="/login"
+              className="flex items-center space-x-1 px-4 py-2 text-gray-600 hover:text-gray-800 rounded-lg hover:bg-white/50 transition-all duration-200"
+            >
+              <LogIn className="w-4 h-4" />
+              <span>Login</span>
+            </Link>
+            <Link
+              to="/signup"
+              className="flex items-center space-x-1 px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-200"
+            >
+              <UserPlus className="w-4 h-4" />
+              <span>Sign Up</span>
+            </Link>
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 rounded-lg hover:bg-white/50 transition-colors"
@@ -76,6 +94,26 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              
+              {/* Mobile Auth Links */}
+              <div className="pt-2 border-t border-white/20 space-y-2">
+                <Link
+                  to="/login"
+                  className="flex items-center space-x-1 px-4 py-2 text-gray-600 hover:text-gray-800 rounded-lg hover:bg-white/50 transition-all duration-200"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <LogIn className="w-4 h-4" />
+                  <span>Login</span>
+                </Link>
+                <Link
+                  to="/signup"
+                  className="flex items-center space-x-1 px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-200"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <UserPlus className="w-4 h-4" />
+                  <span>Sign Up</span>
+                </Link>
+              </div>
             </div>
           </div>
         )}
